@@ -1,0 +1,30 @@
+﻿
+@model MTest.Models.Employee
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изменение записи сотрудника</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model=>model.Id)
+    @Html.LabelFor(model => model.Name, "Имя")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.LabelFor(model => model.Position, "Должность")
+    <br />
+    @Html.EditorFor(model => model.Position)
+    <br /><br />
+    @Html.LabelFor(model => model.Status, "Статус")
+    <br />
+    @Html.EditorFor(model => model.Status)
+    <br /><br />
+    @Html.LabelFor(model => model.Salary, "Заработная плата")
+    <br />
+    @Html.EditorFor(model => model.Salary)
+    <br /><br />
+    <input type="submit" value="Изменить" />
+}

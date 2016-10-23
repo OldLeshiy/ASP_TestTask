@@ -1,0 +1,53 @@
+﻿@model MTest.Models.IndexViewModel
+@using MTest.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<div>
+    <h2>Список сотрудников</h2>
+
+    <form method="get">
+        <div class="form-inline">
+            <label class="control-label">Статус: </label>
+            @Html.DropDownList("position", Model.StatusList as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+            <input type="submit" value="Фильтр" class="btn btn-default" />
+        </div>
+    </form>
+
+    <table>
+        <tr>
+            <td><p>№</p></td>
+            <td><p>Имя</p></td>
+            <td><p>Должность</p></td>
+            <td><p>Статус</p></td>
+            <td><p>Заработная плата</p></td>
+            <td></td>
+        </tr>
+        @foreach (var e in Model.Employees)
+        {
+            <tr>
+                <td><p>@e.Id</p></td>
+                <td><p>@e.Name</p></td>
+                <td><p>@e.Position</p></td>
+                <td><p>@e.Status</p></td>
+                <td><p>@e.Salary</p></td>
+                <td><p><a href="@Url.Action("Edit", "Home", new { Id = @e.Id })">Изменить</a></p></td>
+                <td><p><a href="@Url.Action("Delete", "Home", new { Id = @e.Id })">Удалить</a></p></td>
+            </tr>
+        }
+    </table>
+    <br />
+   <p><a href="/Home/Create/">Добавить</a></p>
+    <br />
+    <br />
+    <br />
+    <div class="btn-group">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index",new { page = x , position = Model.PositionNow}))
+        
+    </div>
+</div>
+
+

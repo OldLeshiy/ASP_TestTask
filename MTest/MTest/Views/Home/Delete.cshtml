@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MTest.Models.Employee
+<h2>Удаление сотрудника</h2>
+<dl>
+    <dt>Имя</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Должность</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Position)
+    </dd>
+
+    <dt>Статус</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Status)
+    </dd>
+
+    <dt>Заработная плата</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Salary)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}
